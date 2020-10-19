@@ -1,0 +1,130 @@
+* {
+    color: #817f75;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.body {
+    display: grid;
+    grid-template-rows: 10% 90%;
+    /* height: 100vh; */
+}
+
+.nav {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    /* flex-direction: column; */
+    /* text-align: right; */
+    border-bottom: 2px black solid;
+}
+
+.hamburger {
+    height: 70px;
+    width: 70px;
+    cursor: pointer;
+}
+.halves {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100vh;
+}
+.left {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.right {
+    background-color: black;
+}
+
+h1 {
+    /* font-family: "Homemade Apple", cursive; */
+    /* font-family: "Calligraffitti", cursive; */
+    align-self: center;
+    /* margin-left: 50px; */
+    margin: 50px;
+    text-align: center;
+}
+
+h2,
+p {
+    font-family: "Raleway", sans-serif;
+}
+.button {
+    margin: 20px;
+    color: #28262c;
+    border: 2px #28262c solid;
+    /* border-radius: 5px; */
+    height: 40px;
+    width: 150px;
+    box-shadow: 0 10px 20px;
+    text-align: center;
+    line-height: 36px;
+    text-decoration: none;
+    /* grid-column: 2 / 3; */
+}
+
+button:hover {
+    color: white;
+    background-color: #28262c;
+    border: 2px #b80c09 solid;
+    box-shadow: 0 10px 20px;
+    grid-column: 2 / 3;
+}
+
+.wine {
+    font-family: "Unica One", cursive;
+    font-size: 60px;
+    text-decoration: none;
+    padding-left: 20px;
+}
+
+.darkened {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.navigationBar {
+    background-color: white;
+    width: 25%;
+    height: 100%;
+    left: 75%;
+    padding: 30px;
+    z-index: 5;
+    position: absolute;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.close {
+    text-align: right;
+    cursor: pointer;
+}
+
+footer {
+    text-align: right;
+    height: 40px;
+    padding-right: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    position: absolute;
+    border-top: 2px black solid;
+}
+
+.selection {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    align-content: left;
+}
