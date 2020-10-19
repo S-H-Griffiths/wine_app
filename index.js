@@ -53,6 +53,26 @@ app.get("/logout", (req, res) => {
     res.redirect("/welcome");
 });
 
+app.post("/select-wine", async (req, res) => {
+    console.log("req.body", req.body.ingredient);
+    try {
+        let { rows } = await db.createSearch(req.body.ingredient);
+        console.log("ingredient", rows);
+    } catch (e) {
+        console.log("error getting list", e);
+    }
+});
+
+app.get("/user-search/:userInput", async (req, res) => {
+    try {
+        let { rows } = await db.getSearchedUsers(req.params.userInput);
+        console.log("searching", rows);
+        res.json(rows);
+    } catch (e) {
+        console.log("error getting list", e);
+    }
+});
+
 // this must be the last route in the file!!!!
 app.get("*", function (req, res) {
     // if (!req.session.userId) {

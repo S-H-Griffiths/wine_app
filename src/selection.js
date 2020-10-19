@@ -1,7 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "./axios";
+// import { addIngredient } from "../db";
 
 export default function Selection() {
+    const [userInput, setuserInput] = useState("");
+    const [searchList, setsearchList] = useState([]);
+    const [ingredientList, setingredientList] = useState([]);
+    useEffect(() => {
+        (async () => {
+            // console.log("lets see what happens here");
+            let ignore = false;
+            if (userInput) {
+                try {
+                    const { data } = await axios.get(
+                        "/user-search/" + userInput
+                    );
+                    console.log("did the db reply", data);
+                    if (!ignore) {
+                        // console.log("userList", userList);
+                        setsearchList(data);
+                    } else {
+                        // console.log("ignore");
+                    }
+                } catch (e) {
+                    console.log("error in request", e);
+                }
+            } else {
+                setsearchList([]);
+            }
+            return () => {
+                // cleanup function
+                // console.log("cleanup runs");
+                ignore = true;
+            };
+        })();
+    }, [userInput]);
+    const addIngredient = (eep) => {
+        console.log("eep", eep);
+        setingredientList(eep.ingredient);
+    };
+    const clickButton = () => {
+        (async () => {
+            try {
+                // console.log("user input is: ", userInput);
+                let meal = {
+                    ingredient: userInput,
+                };
+                const resp = await axios.post("/select-wine", meal);
+                // console.log("response from the DB", resp.data);
+            } catch (e) {
+                console.log("error in request", e);
+            }
+        })();
+    };
+    const handleChange = (e) => {
+        setuserInput(e.target.value);
+    };
     return (
         <>
             <div className="selection">
@@ -9,8 +63,32 @@ export default function Selection() {
                 <h2>What are you planning to eat</h2>
                 <div>
                     <p>SELECTIONS - Planning a search field</p>
-                    <input type="text" name="ingredients" />
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        name="ingredients"
+                    />
                 </div>
+                {searchList.map((item, i) => {
+                    return (
+                        <div
+                            className="searchList"
+                            key={i}
+                            onClick={addIngredient(item)}
+                        >
+                            <p>{item.ingredient}</p>
+                        </div>
+                    );
+                })}
+                {/* <div className="recipe">
+                    {ingredientList.map((item, i) => {
+                        return (
+                            <div className="searchList" key={i}>
+                                <p>{item}</p>
+                            </div>
+                        );
+                    })}
+                </div> */}
                 <h2>What kind of budget?</h2>
                 <div className="selection">
                     <div>
@@ -52,9 +130,12 @@ export default function Selection() {
                         <label for="occasion3"> Something to celebrate</label>
                     </div>
                 </div>
-                <a className="button" href="/result">
+                <button onClick={clickButton} className="button">
                     SUBMIT
-                </a>
+                </button>
+                {/* <a onClick={clickButton} className="button" href="/result">
+                    SUBMIT
+                </a> */}
             </div>
         </>
     );

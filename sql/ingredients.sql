@@ -2,5 +2,8 @@ DROP TABLE IF EXISTS ingredients CASCADE;
 
 CREATE TABLE ingredients(
   id SERIAL PRIMARY KEY,
-  ingredient TEXT,
+  ingredient TEXT
 );
+
+
+    --   INSERT INTO ingredients ingredient VALUES "Feta";
