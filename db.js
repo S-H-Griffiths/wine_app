@@ -33,7 +33,8 @@ module.exports.matchIngredientTags = (ingredientList, minPrice, maxPrice) => {
         ORDER BY "freq" DESC
         LIMIT 2 )
         AS top_tag ON top_tag.tag_ids = wine_tag.tag_id
-    WHERE price >= ($2) AND price <= ($3)
+    WHERE wine.price > $2 
+    AND wine.price <= $3
     LIMIT 5`;
     const replies = [ingredientList, minPrice, maxPrice];
     return db.query(s, replies);

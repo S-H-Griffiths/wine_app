@@ -189,6 +189,7 @@ footer {
 }
 .resultContainer {
     border: 2px black solid;
+    background-color: white;
     padding: 20px;
     margin: 40px;
 }
@@ -205,4 +206,5 @@ footer {
     height: 100px;
     width: 100px;
     margin: 25px;
+    background-color: white;
 }

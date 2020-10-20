@@ -3,7 +3,7 @@ import axios from "./axios";
 // import { async } from "crypto-random-string";
 import { useHistory } from "react-router-dom";
 
-export default function Selection() {
+export default function Selection({ wineList }) {
     const [userInput, setuserInput] = useState("");
     const [searchList, setsearchList] = useState([]);
     const [ingredientList, setingredientList] = useState([]);
@@ -67,13 +67,13 @@ export default function Selection() {
                     budget: budget,
                     evening_type: eveningType,
                 };
+                // console.log("sending to db", meal);
                 const resp = await axios.post("/select-wine", meal);
-                console.log("sending to db", resp.data);
+                // console.log("from the to db", resp.data);
                 // might be easiest just to send it back to app
+                wineList(resp.data.winelist);
                 // let selection = this.props.resp.data;
                 // setuserResults(resp.data);
-                // this.props.
-                // .location
                 history.push("/result");
             } catch (e) {
                 console.log("error in request", e);

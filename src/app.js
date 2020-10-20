@@ -13,12 +13,19 @@ class App extends React.Component {
         super(props);
         this.state = {
             uploaderVisible: false,
+            wineList: {},
         };
     }
     toggleUploader() {
         // console.log("I update the state and hide the uploader");
         this.setState({
             uploaderVisible: !this.state.uploaderVisible,
+        });
+    }
+    wineList(arg) {
+        // console.log("I am trying to save the winelist", arg);
+        this.setState({
+            wineList: arg,
         });
     }
     render() {
@@ -35,9 +42,14 @@ class App extends React.Component {
                     <Route
                         exact
                         path="/selection"
-                        render={() => <Selection />}
+                        render={() => (
+                            <Selection wineList={(arg) => this.wineList(arg)} />
+                        )}
                     />
-                    <Route path="/result" render={() => <Result />} />
+                    <Route
+                        path="/result"
+                        render={() => <Result wineList={this.state.wineList} />}
+                    />
                     {this.state.uploaderVisible && (
                         <Hamburger
                             toggleUploader={() => this.toggleUploader()}

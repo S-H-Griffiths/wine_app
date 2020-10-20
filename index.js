@@ -64,13 +64,11 @@ app.get("/user-search/:userInput", async (req, res) => {
 
 app.post("/select-wine", async (req, res) => {
     try {
-        console.log("req.body.ingredient", req.body.ingredient);
-        console.log("req.body.budget", req.body.budget);
-
         var maxPrice;
         var minPrice;
+        console.log("data from request", req.body.budget, req.body.ingredient);
         if (req.body.budget == "budget1") {
-            maxPrice = 6;
+            maxPrice = 7;
             minPrice = 0;
         } else if (req.body.budget == "budget2") {
             maxPrice = 12;
@@ -79,14 +77,13 @@ app.post("/select-wine", async (req, res) => {
             maxPrice = 50;
             minPrice = 12;
         }
-        console.log("price range", minPrice, maxPrice);
-        // algorithm goes here
+        console.log("price range: ", minPrice, maxPrice);
         let { rows } = await db.matchIngredientTags(
             req.body.ingredient,
             minPrice,
             maxPrice
         );
-        console.log("ingredient", rows);
+        console.log("db response: ", rows);
         res.json({
             winelist: rows,
         });
