@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS saved_wine CASCADE;
+
+CREATE TABLE saved_wine(
+  id SERIAL PRIMARY KEY,
+  user_id INT REFERENCES users(id) NOT NULL,
+  wine_id INT REFERENCES users(id) NOT NULL,
+  saved BOOLEAN DEFAULT true,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

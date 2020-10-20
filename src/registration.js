@@ -8,7 +8,7 @@ export default function Registration() {
     const [error, submit] = useAuthSubmit("/register", values);
 
     return (
-        <div className="right">
+        <div className="login">
             {error && (
                 <div className="error">
                     Something went wrong, please try again

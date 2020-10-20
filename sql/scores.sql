@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS scores CASCADE;
+
+CREATE TABLE scores(
+  id SERIAL PRIMARY KEY,
+  user_id INT REFERENCES users(id) NOT NULL,
+  wine_id INT REFERENCES users(id) NOT NULL,
+  score INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -5,12 +5,30 @@ export default function Result({ wineList }) {
     const [userResults, setuserResults] = useState([]);
 
     useEffect(() => {
-        // on page load, get the results
-
-        console.log("winelist in result page", wineList);
-        setuserResults(wineList);
-        console.log("userResults", userResults);
+        (async () => {
+            const resp = await axios.post("/check-saved-wines", wineList);
+            for (var i = 0; i < wineList.length; i++) {
+                if (resp.data.list.includes(wineList[i].id)) {
+                    wineList[i].class = "saved";
+                } else {
+                    wineList[i].class = "notsaved";
+                }
+            }
+            setuserResults(wineList);
+        })();
     }, []);
+
+    const saveWine = (e) => {
+        (async () => {
+            let save = {
+                wine_id: e.target.name,
+            };
+            const resp = await axios.post("/save-wine", save);
+            console.log("db resp", resp);
+            // update user results.
+            setuserResults(wineList);
+        })();
+    };
     return (
         <div className="resultContainer">
             <h1>Your choices resulted in finding a nice bottle</h1>
@@ -21,6 +39,7 @@ export default function Result({ wineList }) {
                             <img
                                 className="resultCardimg"
                                 src="./img/wine-bottle.png"
+                                alt="wine bottle icon"
                             />
                             <div>
                                 <p>
@@ -33,6 +52,12 @@ export default function Result({ wineList }) {
                                 <p>Available at: {item.shop}</p>
                                 <p>For €{item.price}</p>
                             </div>
+                            <img
+                                className="save"
+                                src={`./img/${item.class}.png`}
+                                name={`${item.id}`}
+                                onClick={(e) => saveWine(e)}
+                            />
                         </div>
                     );
                 })}

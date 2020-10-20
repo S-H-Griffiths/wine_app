@@ -116,7 +116,7 @@ class ResetPassword extends React.Component {
             );
         }
         return (
-            <div className="right">
+            <div className="login">
                 {this.state.error && (
                     <div className="error">
                         That didn't work, please try again

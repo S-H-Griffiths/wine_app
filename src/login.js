@@ -8,7 +8,7 @@ export default function Login() {
     const [error, submit] = useAuthSubmit("/login", values);
 
     return (
-        <div className="right">
+        <div className="login">
             {error && (
                 <div className="error">
                     Incorrect combination, please try again
