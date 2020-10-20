@@ -53,21 +53,25 @@ app.get("/logout", (req, res) => {
     res.redirect("/welcome");
 });
 
-app.post("/select-wine", async (req, res) => {
-    console.log("req.body", req.body.ingredient);
+app.get("/user-search/:userInput", async (req, res) => {
     try {
-        let { rows } = await db.createSearch(req.body.ingredient);
-        console.log("ingredient", rows);
+        let { rows } = await db.getSearchedUsers(req.params.userInput);
+        res.json(rows);
     } catch (e) {
         console.log("error getting list", e);
     }
 });
 
-app.get("/user-search/:userInput", async (req, res) => {
+app.post("/select-wine", async (req, res) => {
     try {
-        let { rows } = await db.getSearchedUsers(req.params.userInput);
-        console.log("searching", rows);
-        res.json(rows);
+        // algorithm goes here
+        let { rows } = await db.createSearch(req.body.ingredient[0]);
+        console.log("ingredient", rows);
+        res.json({
+            falsedata1: rows[0].ingredient,
+            falsedata2: rows[0].ingredient,
+            falsedata3: rows[0].ingredient,
+        });
     } catch (e) {
         console.log("error getting list", e);
     }

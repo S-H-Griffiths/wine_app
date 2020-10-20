@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axios from "./axios";
-// import { addIngredient } from "../db";
+// import { async } from "crypto-random-string";
+import { useHistory } from "react-router-dom";
 
 export default function Selection() {
     const [userInput, setuserInput] = useState("");
     const [searchList, setsearchList] = useState([]);
     const [ingredientList, setingredientList] = useState([]);
+    const [budget, setBudget] = useState([]);
+    const [eveningType, seteveningType] = useState([]);
+    const [userResults, setuserResults] = useState({});
+    const history = useHistory();
     useEffect(() => {
         (async () => {
-            // console.log("lets see what happens here");
             let ignore = false;
             if (userInput) {
                 try {
                     const { data } = await axios.get(
                         "/user-search/" + userInput
                     );
-                    console.log("did the db reply", data);
                     if (!ignore) {
-                        // console.log("userList", userList);
                         setsearchList(data);
                     } else {
-                        // console.log("ignore");
+                        console.log("ignore");
                     }
                 } catch (e) {
                     console.log("error in request", e);
@@ -29,25 +31,50 @@ export default function Selection() {
                 setsearchList([]);
             }
             return () => {
-                // cleanup function
-                // console.log("cleanup runs");
                 ignore = true;
             };
         })();
     }, [userInput]);
     const addIngredient = (eep) => {
-        console.log("eep", eep);
-        setingredientList(eep.ingredient);
+        setingredientList(ingredientList.concat(eep.ingredient));
+        setuserInput("");
+    };
+    const updateBudget = ({ target }) => {
+        const exists = budget.some((item) => item === target.name);
+        if (!exists) {
+            setBudget((budget) => {
+                return [...budget, target.name];
+            });
+        } else {
+            setBudget(budget.filter((item) => item !== target.name));
+        }
+    };
+    const updateOccasion = ({ target }) => {
+        const exists = eveningType.some((item) => item === target.name);
+        if (!exists) {
+            seteveningType((budget) => {
+                return [...eveningType, target.name];
+            });
+        } else {
+            seteveningType(eveningType.filter((item) => item !== target.name));
+        }
     };
     const clickButton = () => {
         (async () => {
             try {
-                // console.log("user input is: ", userInput);
                 let meal = {
-                    ingredient: userInput,
+                    ingredient: ingredientList,
+                    budget: budget,
+                    evening_type: eveningType,
                 };
                 const resp = await axios.post("/select-wine", meal);
-                // console.log("response from the DB", resp.data);
+                console.log("sending to db", resp.data);
+                // might be easiest just to send it back to app
+                // let selection = this.props.resp.data;
+                // setuserResults(resp.data);
+                // this.props.
+                // .location
+                history.push("/result");
             } catch (e) {
                 console.log("error in request", e);
             }
@@ -59,83 +86,115 @@ export default function Selection() {
     return (
         <>
             <div className="selection">
-                <h1>Complete these questions to find a match for your meal.</h1>
-                <h2>What are you planning to eat</h2>
-                <div>
-                    <p>SELECTIONS - Planning a search field</p>
-                    <input
-                        onChange={handleChange}
-                        type="text"
-                        name="ingredients"
-                    />
+                <h1>FIND A MATCH FOR YOUR MEAL.</h1>
+                <h2>WHAT ARE YOU PLANNING TO EAT?</h2>
+                <div className="ingredients">
+                    <div>
+                        <p>SELECTIONS</p>
+                        <input
+                            onChange={handleChange}
+                            type="text"
+                            name="ingredients"
+                            autoComplete="off"
+                        />
+                        {searchList.map((item, i) => {
+                            return (
+                                <div
+                                    className="searchList"
+                                    key={i}
+                                    onClick={() => addIngredient(item)}
+                                >
+                                    <p>{item.ingredient}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    <div className="recipe">
+                        {ingredientList.map((item, i) => {
+                            return (
+                                <div className="searchList" key={i}>
+                                    <p>{item}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
-                {searchList.map((item, i) => {
-                    return (
-                        <div
-                            className="searchList"
-                            key={i}
-                            onClick={addIngredient(item)}
-                        >
-                            <p>{item.ingredient}</p>
-                        </div>
-                    );
-                })}
-                {/* <div className="recipe">
-                    {ingredientList.map((item, i) => {
-                        return (
-                            <div className="searchList" key={i}>
-                                <p>{item}</p>
-                            </div>
-                        );
-                    })}
-                </div> */}
-                <h2>What kind of budget?</h2>
+                <h2>WHAT KIND OF BUDGET?</h2>
+
+                <div className="attributes">
+                    <div className="attribute">
+                        <input
+                            type="checkbox"
+                            name="budget1"
+                            onClick={(e) => updateBudget(e)}
+                        ></input>
+                        <img className="icon" src="./img/glass.png" />
+                        <label htmlFor="budget1">
+                            {" "}
+                            SOMETHING SIMPLE (€4-€7)
+                        </label>
+                    </div>
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="budget2"
+                            onClick={(e) => updateBudget(e)}
+                        />
+                        <img className="icon" src="./img/glass.png" />
+                        <label htmlFor="budget2">
+                            A BIT NICER THAN NORMAL(€7-€12)
+                        </label>
+                    </div>
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="budget3"
+                            onClick={(e) => updateBudget(e)}
+                        />
+                        <img className="icon" src="./img/glass.png" />
+                        <label htmlFor="budget3">
+                            SOMETHING TO CELEBRATE(€12-€20)
+                        </label>
+                    </div>
+                </div>
+
+                <h2>IS IT A SPECIAL OCCASION?</h2>
                 <div className="selection">
                     <div>
                         <input
-                            type="range"
-                            min="1"
-                            max="50"
-                            value="2"
-                            className="slider"
-                            name="budget1"
-                        ></input>
-                        <label for="budget1"> Something simple (€4-€7)</label>
+                            type="checkbox"
+                            name="occasion1"
+                            onClick={(e) => updateOccasion(e)}
+                        />
+                        <label htmlFor="occasion1"> DINNER WITH FRIENDS</label>
                     </div>
-                    {/* <div>
-                        <input type="checkbox" name="budget2" />
-                        <label for="budget2">
-                            A bit nicer than normal(€7-€12)
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="occasion2"
+                            onClick={(e) => updateOccasion(e)}
+                        />
+                        <label htmlFor="occasion2"> ROMANTIC EVENING</label>
+                    </div>
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="occasion3"
+                            onClick={(e) => updateOccasion(e)}
+                        />
+                        <label htmlFor="occasion3">
+                            {" "}
+                            SOMETHING TO CELEBRATE
                         </label>
                     </div>
-                    <div>
-                        <input type="checkbox" name="budget3" />
-                        <label for="budget3">
-                            Something to celebrate(€12-€20)
-                        </label>
-                    </div> */}
                 </div>
-                <h2>Is it a special occasion?</h2>
-                <div className="selection">
-                    <div>
-                        <input type="checkbox" name="occasion1" />
-                        <label for="occasion1"> Dinner with friends</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="occasion2" />
-                        <label for="occasion2"> Romantic evening</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="occasion3" />
-                        <label for="occasion3"> Something to celebrate</label>
-                    </div>
-                </div>
-                <button onClick={clickButton} className="button">
+                <button
+                    onClick={() => clickButton()}
+                    className="button"
+                    type="submit"
+                >
                     SUBMIT
                 </button>
-                {/* <a onClick={clickButton} className="button" href="/result">
-                    SUBMIT
-                </a> */}
             </div>
         </>
     );

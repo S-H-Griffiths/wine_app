@@ -5,7 +5,7 @@ const db = spicedPg(
 
 module.exports.createSearch = (name) => {
     //algorithm
-    const u = `SELECT * FROM ingredients (ingredient) WHERE ingredient = ($1) `;
+    const u = `SELECT * FROM ingredients ingredient WHERE ingredient = $1 `;
     const replies = [name];
     return db.query(u, replies);
 };
