@@ -36,10 +36,23 @@ body {
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+    color: white;
 }
 
 .right {
     background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shelf {
+    /* height: 600px; */
+    height: 750px;
+    width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+    /* margin: 60px; */
 }
 
 h1 {

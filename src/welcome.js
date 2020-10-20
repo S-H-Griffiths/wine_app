@@ -14,7 +14,7 @@ export default function Welcome() {
             <div className="welcome">
                 <div className="left">
                     <div className="mblogo">
-                        <h1>Help us improve your evening</h1>
+                        <h1>LET US IMPROVE YOUR EVENING</h1>
                     </div>
                 </div>
                 <HashRouter>

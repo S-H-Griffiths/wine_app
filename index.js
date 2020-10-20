@@ -64,13 +64,31 @@ app.get("/user-search/:userInput", async (req, res) => {
 
 app.post("/select-wine", async (req, res) => {
     try {
+        console.log("req.body.ingredient", req.body.ingredient);
+        console.log("req.body.budget", req.body.budget);
+
+        var maxPrice;
+        var minPrice;
+        if (req.body.budget == "budget1") {
+            maxPrice = 6;
+            minPrice = 0;
+        } else if (req.body.budget == "budget2") {
+            maxPrice = 12;
+            minPrice = 6;
+        } else {
+            maxPrice = 50;
+            minPrice = 12;
+        }
+        console.log("price range", minPrice, maxPrice);
         // algorithm goes here
-        let { rows } = await db.createSearch(req.body.ingredient[0]);
+        let { rows } = await db.matchIngredientTags(
+            req.body.ingredient,
+            minPrice,
+            maxPrice
+        );
         console.log("ingredient", rows);
         res.json({
-            falsedata1: rows[0].ingredient,
-            falsedata2: rows[0].ingredient,
-            falsedata3: rows[0].ingredient,
+            winelist: rows,
         });
     } catch (e) {
         console.log("error getting list", e);

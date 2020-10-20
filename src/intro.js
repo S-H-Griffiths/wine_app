@@ -5,14 +5,14 @@ export default function Selection() {
     return (
         <div className="halves">
             <div className="left">
-                <h1>Not sure what to have with dinner tonight?</h1>
+                <h1>NOT SURE WHAT TO HAVE WITH DINNER TONIGHT?</h1>
                 <h2>LET US HELP</h2>
                 <a className="button" href="/selection">
                     BEGIN
                 </a>
             </div>
             <div className="right">
-                <img />
+                <img className="shelf" src="./img/shelf.jpg" />
             </div>
         </div>
     );
