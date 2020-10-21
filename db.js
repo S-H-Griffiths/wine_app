@@ -77,7 +77,7 @@ module.exports.checkSavedWine = (userId, wineId) => {
 };
 
 module.exports.deleteSaved = (userId, wineId) => {
-    const c = `DELETE FROM saved_wine WHERE user_id = $1 AND wine_id = $2`;
+    const c = `DELETE FROM saved_wine WHERE user_id = $1 AND wine_id = $2 RETURNING *`;
     const replies = [userId, wineId];
     return db.query(c, replies);
 };

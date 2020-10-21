@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Hamburger({ toggleUploader }) {
     return (
@@ -7,10 +8,16 @@ export default function Hamburger({ toggleUploader }) {
                 <p className="close" onClick={() => toggleUploader()}>
                     X
                 </p>
-                <h2>Navigation</h2>
-                <a href="/">Home</a>
-                <a href="/selection">New Selection</a>
-                <a href="/logout">Logout</a>
+                <h2 className="navText">NAVIGATION</h2>
+                <Link to="/" className="navText">
+                    - HOME
+                </Link>
+                <Link to="/selection" className="navText">
+                    - NEW SELECTION
+                </Link>
+                <Link to="/logout" className="navText">
+                    - LOGOUT
+                </Link>
             </div>
         </div>
     );

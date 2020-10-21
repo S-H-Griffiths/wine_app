@@ -199,7 +199,6 @@ app.post("/select-wine", async (req, res) => {
 
 app.post("/check-saved-wines", async (req, res) => {
     try {
-        // console.log("save wine", req.body);
         var savedWine = [];
         for (var i = 0; i < req.body.length; i++) {
             let { rows } = await db.checkSavedWine(
@@ -209,8 +208,6 @@ app.post("/check-saved-wines", async (req, res) => {
             if (rows.length) {
                 savedWine.push(rows[0].wine_id);
             }
-            // console.log("rows", rows);
-            // console.log("savedWine", savedWine);
         }
         res.json({ list: savedWine });
     } catch (e) {
@@ -229,8 +226,11 @@ app.post("/save-wine", async (req, res) => {
         // if already saved
         if (data.rows.length) {
             console.log("deleting from the db");
-            await db.deleteSaved(req.session.userId, req.body.wine_id);
-            res.json({ success: true });
+            let { rows } = await db.deleteSaved(
+                req.session.userId,
+                req.body.wine_id
+            );
+            res.json({ rows });
         } else {
             let { rows } = await db.userSaveWine(
                 req.session.userId,

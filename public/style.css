@@ -3,6 +3,8 @@
     box-sizing: border-box;
     margin: 0;
 }
+/* 2b0000 */
+/* 899878 */
 
 body {
     display: grid;
@@ -21,6 +23,16 @@ body {
     background-color: white;
 }
 
+.navLinks {
+    align-items: center;
+}
+
+.navSave {
+    height: 30px;
+    width: 30px;
+    margin: 20px;
+}
+
 .hamburger {
     height: 70px;
     width: 70px;
@@ -36,7 +48,6 @@ body {
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    color: white;
 }
 
 .right {
@@ -60,7 +71,7 @@ h1 {
     /* font-family: "Calligraffitti", cursive; */
     align-self: center;
     /* margin-left: 50px; */
-    margin: 50px;
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -71,25 +82,54 @@ label,
 button {
     /* font-family: "Raleway", sans-serif; */
     font-family: "M PLUS 1p", sans-serif;
+    padding: 5px;
 }
+
+.white {
+    color: white;
+}
+
+.margin {
+    margin: 20px;
+    text-align: center;
+}
+
 .button {
     margin: 20px;
-    color: #28262c;
-    border: 2px #28262c solid;
+    color: white;
+    border: 2px white solid;
     /* border-radius: 5px; */
     height: 40px;
     width: 150px;
-    box-shadow: 0 10px 20px;
+    /* box-shadow: 0 10px 20px; */
     text-align: center;
     line-height: 36px;
     text-decoration: none;
+    font-family: "M PLUS 1p", sans-serif;
     /* grid-column: 2 / 3; */
 }
 
+.button:hover {
+    box-shadow: 0 10px 20px;
+}
+
+.submit {
+    margin: 20px;
+    color: #28262c;
+    border: 2px #28262c solid;
+    height: 40px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 0 10px 20px;
+    /* line-height: 36px; */
+    text-decoration: none;
+    font-family: "M PLUS 1p", sans-serif;
+}
+
 button:hover {
-    color: white;
-    background-color: #28262c;
-    border: 2px #b80c09 solid;
+    color: #2b0000;
+    /* background-color: #2b0000; */
+    border: 2px #2b0000 solid;
     box-shadow: 0 10px 20px;
     grid-column: 2 / 3;
 }
@@ -112,7 +152,7 @@ button:hover {
 }
 
 .navigationBar {
-    background-color: white;
+    background-color: #2b0000;
     width: 25%;
     height: 100%;
     left: 75%;
@@ -122,11 +162,20 @@ button:hover {
     font-size: 25px;
     display: flex;
     flex-direction: column;
+    font-family: "M PLUS 1p", sans-serif;
+}
+
+.navText {
+    color: white;
+    text-decoration: none;
 }
 
 .close {
     text-align: right;
     cursor: pointer;
+    color: white;
+    font-family: "M PLUS 1p", sans-serif;
+    font-weight: bold;
 }
 
 footer {
@@ -145,10 +194,13 @@ footer {
 }
 
 .selection {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100vh;
+    /* display: flex; */
+    /* flex-direction: column; */
     /* justify-content: center; */
-    align-items: center;
+    /* align-items: center; */
     /* align-content: left; */
     border: 2px black solid;
     margin: 30px;
@@ -156,8 +208,11 @@ footer {
 }
 
 .ingredients {
-    display: flex;
+    /* display: flex; */
+    margin-bottom: 40px;
+    text-align: left;
 }
+
 .attributes {
     display: flex;
     margin: 20px;
@@ -179,27 +234,50 @@ footer {
     background-color: pink;
 }
 
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .recipe {
     /* border: 2px black solid; */
     box-shadow: 0 2px 2px;
-    background-color: wheat;
-    height: 200px;
-    width: 200px;
-    padding: 5px;
-}
-.resultContainer {
-    border: 2px black solid;
-    background-color: white;
+    background-color: #2b0000;
+    height: 500px;
+    width: 500px;
     padding: 20px;
     margin: 40px;
 }
-.resultCard {
+
+.list {
+    color: white;
+    font-size: 25px;
+    font-family: "M PLUS 1p", sans-serif;
+}
+
+.resultContainer {
     border: 2px black solid;
+    background-color: white;
+    padding: 10px;
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.resultCard {
+    /* border: 2px black solid; */
     height: 150px;
-    width: 600px;
+    width: 700px;
     margin: 20px;
+
     display: grid;
     grid-template-columns: 120px auto auto auto;
+    /* background-color: #2b0000; */
+    box-shadow: 0 2px 2px;
+    /* opacity: 2%; */
 }
 
 .resultCardimg {
