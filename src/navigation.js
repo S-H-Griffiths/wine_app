@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 export default function Navigation({ toggleUploader }) {
     return (
         <div className="navLinks">
+            <Link to="/all-wines">
+                <img
+                    src="img/wine-bottle.png"
+                    className="navSave"
+                    alt="wine icon"
+                />
+            </Link>
             <Link to="/saved">
                 <img
                     src="img/notsaved.png"

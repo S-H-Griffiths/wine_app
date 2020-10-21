@@ -9,8 +9,16 @@
 body {
     display: grid;
     grid-template-rows: 10% 90%;
-    /* height: 100vh; */
     background-color: #2b0000;
+}
+
+.imgbcg {
+    background-image: url("img/bottle.jpg");
+    background-color: #2b0000;
+    /* height: 1500px; */
+    overflow: hidden;
+    object-fit: cover;
+    background-size: 100vw;
 }
 
 .nav {
@@ -30,7 +38,8 @@ body {
 .navSave {
     height: 30px;
     width: 30px;
-    margin: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
 }
 
 .hamburger {
@@ -203,7 +212,7 @@ footer {
     /* align-items: center; */
     /* align-content: left; */
     border: 2px black solid;
-    margin: 30px;
+    margin: 60px;
     background-color: white;
 }
 
@@ -211,6 +220,19 @@ footer {
     /* display: flex; */
     margin-bottom: 40px;
     text-align: left;
+}
+
+.searchField {
+    height: 60px;
+    width: 200px;
+    border: 2px black solid;
+    /* border-radius: 15%; */
+    font-size: 20px;
+}
+
+.searchField:focus {
+    color: #2b0000;
+    border: 2px #2b0000 solid;
 }
 
 .attributes {
@@ -255,13 +277,14 @@ footer {
     color: white;
     font-size: 25px;
     font-family: "M PLUS 1p", sans-serif;
+    margin-left: 15px;
 }
 
 .resultContainer {
     border: 2px black solid;
     background-color: white;
     padding: 10px;
-    margin: 40px;
+    margin: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;

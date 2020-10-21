@@ -209,6 +209,7 @@ app.post("/check-saved-wines", async (req, res) => {
                 savedWine.push(rows[0].wine_id);
             }
         }
+        console.log("am I getting all the bottles", savedWine);
         res.json({ list: savedWine });
     } catch (e) {
         console.log("error in get saved", e);
@@ -241,6 +242,35 @@ app.post("/save-wine", async (req, res) => {
         }
     } catch (e) {
         console.log("error in save", e);
+    }
+});
+
+app.get("/get-user-wines", async (req, res) => {
+    try {
+        console.log("req.session.userId", req.session.userId);
+        let { rows } = await db.getUserSavedDetails(req.session.userId);
+        let data = await db.getUserSavedWines(req.session.userId);
+        console.log("db getting saved wines response", rows, data.rows);
+        res.json({
+            user: rows[0],
+            wines: data.rows,
+        });
+    } catch (e) {
+        console.log("error getting list", e);
+    }
+});
+
+app.get("/get-all-wines", async (req, res) => {
+    try {
+        let { rows } = await db.getAllWines(req.session.userId);
+        let data = await db.getUserSavedWines(req.session.userId);
+        console.log("db response", rows, data.rows);
+        res.json({
+            all_wines: rows,
+            saved_wines: data.rows.reverse(),
+        });
+    } catch (e) {
+        console.log("error getting list", e);
     }
 });
 

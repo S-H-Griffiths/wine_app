@@ -7,6 +7,7 @@ import Hamburger from "./hamburger";
 import Selection from "./selection";
 import Result from "./result";
 import Saved from "./saved";
+import Wines from "./wine-list";
 import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends React.Component {
@@ -56,7 +57,19 @@ class App extends React.Component {
                             />
                         )}
                     />
-                    <Route path="/saved" render={() => <Saved />} />
+                    <Route
+                        path="/saved"
+                        render={() => (
+                            <Saved wineFunction={(arg) => this.wineList(arg)} />
+                        )}
+                    />
+                    <Route
+                        path="/all-wines"
+                        render={() => (
+                            <Wines wineFunction={(arg) => this.wineList(arg)} />
+                        )}
+                    />
+
                     {this.state.uploaderVisible && (
                         <Hamburger
                             toggleUploader={() => this.toggleUploader()}

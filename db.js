@@ -81,3 +81,20 @@ module.exports.deleteSaved = (userId, wineId) => {
     const replies = [userId, wineId];
     return db.query(c, replies);
 };
+
+module.exports.getUserSavedDetails = (userId) => {
+    const c = `SELECT * FROM users WHERE id = $1`;
+    const replies = [userId];
+    return db.query(c, replies);
+};
+
+module.exports.getUserSavedWines = (userId) => {
+    const c = `SELECT * FROM saved_wine JOIN wine on wine.id = saved_wine.wine_id WHERE saved_wine.user_id = $1`;
+    const replies = [userId];
+    return db.query(c, replies);
+};
+
+module.exports.getAllWines = () => {
+    const c = `SELECT * FROM wine`;
+    return db.query(c);
+};

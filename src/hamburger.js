@@ -9,13 +9,25 @@ export default function Hamburger({ toggleUploader }) {
                     X
                 </p>
                 <h2 className="navText">NAVIGATION</h2>
-                <Link to="/" className="navText">
+                <Link
+                    to="/"
+                    className="navText"
+                    onClick={() => toggleUploader()}
+                >
                     - HOME
                 </Link>
-                <Link to="/selection" className="navText">
+                <Link
+                    to="/selection"
+                    className="navText"
+                    onClick={() => toggleUploader()}
+                >
                     - NEW SELECTION
                 </Link>
-                <Link to="/logout" className="navText">
+                <Link
+                    to="/logout"
+                    className="navText"
+                    onClick={() => toggleUploader()}
+                >
                     - LOGOUT
                 </Link>
             </div>

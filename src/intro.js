@@ -12,7 +12,7 @@ export default function Selection() {
                 <p className="white margin">
                     Our recommendation engine will pair real food you actually
                     eat with a great wine from a local wine shop. Support local
-                    businesses and learn a little about what you're drinking!
+                    businesses and learn a little about what you're drinking.
                 </p>
                 <a className="button" href="/selection">
                     BEGIN

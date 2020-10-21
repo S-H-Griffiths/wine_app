@@ -6,11 +6,13 @@ export default function Result({ wineList, wineFunction, userResults }) {
 
     const saveWine = (e) => {
         (async () => {
+            console.log("clicking");
             let wine = e.target.name;
             let save = {
                 wine_id: wine,
             };
-            await axios.post("/save-wine", save);
+            let { rows } = await axios.post("/save-wine", save);
+            console.log("after the axios", rows);
             for (var i = 0; i < wineList.length; i++) {
                 if (wineList[i].id == wine && wineList[i].class == "saved") {
                     wineList[i].class = "notsaved";
