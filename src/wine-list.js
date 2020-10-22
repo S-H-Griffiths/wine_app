@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "./axios";
 import Card from "./results-card";
 
-export default function Wines({ wineFunction }) {
+export default function Wines({ wineFunction, loggedIn }) {
     const [wineList, setwineList] = useState([]);
     const [userResults, setuserResults] = useState([]);
     useEffect(() => {
+        if (!loggedIn) {
+            console.log("the user isnt logged in so redirecting");
+            location.replace("/");
+        }
         (async () => {
             let wines = [];
             const resp = await axios.get("/get-all-wines");

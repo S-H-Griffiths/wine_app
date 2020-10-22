@@ -40,9 +40,9 @@ module.exports.matchIngredientTags = (ingredientList, minPrice, maxPrice) => {
     return db.query(s, replies);
 };
 
-module.exports.registerUser = (first, last, email, password) => {
-    const i = `INSERT INTO users (firstName, lastName, email, password) VALUES ($1, $2, $3, $4) RETURNING *`;
-    const replies = [first, last, email, password];
+module.exports.registerUser = (first, last, email, password, user_type) => {
+    const i = `INSERT INTO users (firstName, lastName, email, password, user_type) VALUES ($1, $2, $3, $4, $5) RETURNING *`;
+    const replies = [first, last, email, password, user_type];
     return db.query(i, replies);
 };
 
@@ -121,5 +121,11 @@ module.exports.getWineTag = (tag_name) => {
 module.exports.addWineTags = (wine_id, tag_id) => {
     const c = `INSERT INTO wine_tag (wine_id, tag_id) VALUES ($1, $2) RETURNING *`;
     const replies = [wine_id, tag_id];
+    return db.query(c, replies);
+};
+
+module.exports.checkUserType = (userId) => {
+    const c = `SELECT user_type FROM users WHERE id = ($1)`;
+    const replies = [userId];
     return db.query(c, replies);
 };

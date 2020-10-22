@@ -3,7 +3,7 @@ import axios from "./axios";
 // import { async } from "crypto-random-string";
 import { useHistory } from "react-router-dom";
 
-export default function Add({ toggleUploader }) {
+export default function Add({ toggleUploader, userType, loggedIn }) {
     const [userInput, setuserInput] = useState("");
     const [wineEntry, setwineEntry] = useState({});
     const [error, setError] = useState();
@@ -23,6 +23,10 @@ export default function Add({ toggleUploader }) {
         })();
     };
     useEffect(() => {
+        if (!loggedIn || userType != "wine_shop") {
+            console.log("the user isnt logged in so redirecting");
+            location.replace("/");
+        }
         setwineEntry({ ...wineEntry, userInput });
     }, [userInput]);
     const updateTags = ({ target }) => {

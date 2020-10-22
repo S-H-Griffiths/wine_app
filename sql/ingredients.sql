@@ -6,11 +6,7 @@ CREATE TABLE ingredients(
 );
 
 
-    --   INSERT INTO ingredients ingredient VALUES "Feta";
 
-
-    INSERT INTO ingredients [ ( ingredient ) ]
-    VALUES ( Lemon,
-Crab,
-Oysters,
-Manchego ) 
+-- INSERT INTO ingredients (ingredient)
+-- VALUES 
+-- ('Truffle');

@@ -10,6 +10,7 @@ export function useAuthSubmit(url, values) {
         axios
             .post(url, values)
             .then(({ data }) => {
+                console.log("success");
                 data.success ? location.replace("/") : setError(true);
             })
             .catch((err) => {

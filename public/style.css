@@ -25,6 +25,7 @@ body {
     padding: 10px;
     display: flex;
     justify-content: space-between;
+    /* align-items: center */
     /* flex-direction: column; */
     /* text-align: right; */
     border-bottom: 2px black solid;
@@ -33,6 +34,17 @@ body {
 
 .navLinks {
     align-items: center;
+}
+
+.navTest {
+    margin-bottom: 40px;
+    margin-right: 20px;
+    text-decoration: none;
+    width: 50px;
+    font-family: "M PLUS 1p", sans-serif;
+    font-size: 14px;
+    align-content: center;
+    /* line-height: 120px; */
 }
 
 .navSave {
@@ -177,6 +189,7 @@ button:hover {
 .navText {
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .close {
@@ -185,6 +198,7 @@ button:hover {
     color: white;
     font-family: "M PLUS 1p", sans-serif;
     font-weight: bold;
+    text-decoration: none;
 }
 
 footer {
@@ -300,7 +314,7 @@ footer {
     margin: 20px;
 
     display: grid;
-    grid-template-columns: 120px auto auto auto;
+    grid-template-columns: 120px 300px auto 50px;
     /* background-color: #2b0000; */
     box-shadow: 0 2px 2px;
     /* opacity: 2%; */
@@ -329,7 +343,11 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 500px;
+    width: 100%;
+    margin: 20px;
+    /* background-color: white; */
+    /* color: white; */
+    /* border: 2px black solid; */
 }
 
 .upload {
@@ -378,6 +396,53 @@ footer {
     border-bottom: 2px #28262c solid;
 }
 
+.otherInput {
+    border: 0px;
+    border-bottom: 2px white solid;
+    margin: 5px;
+    background-color: #2b0000;
+}
+
+.registerButton {
+    margin: 20px;
+    color: white;
+    background-color: #2b0000;
+    border: 2px white solid;
+    /* border-radius: 5px; */
+    height: 40px;
+    width: 150px;
+    text-align: center;
+    /* line-height: 36px; */
+    text-decoration: none;
+    font-family: "M PLUS 1p", sans-serif;
+    /* grid-column: 2 / 3; */
+}
+
+.registerButton:hover {
+    box-shadow: 0 10px 20px;
+    border: 2px white solid;
+    color: white;
+}
+
 .position {
     left: 40%;
+}
+
+@media screen and (max-width: 800px) {
+    .halves {
+        display: flex;
+        flex-direction: column;
+        /* height: 100vh; */
+    }
+
+    .navSave {
+        height: 50px;
+        width: 50px;
+        margin-bottom: 20px;
+        margin-right: 40px;
+    }
+
+    .navLinks {
+        height: 200px;
+    }
 }

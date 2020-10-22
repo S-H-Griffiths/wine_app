@@ -52,7 +52,7 @@ app.use(function (req, res, next) {
 app.get("/logout", (req, res) => {
     console.log("user hit logout route");
     req.session.userId = null;
-    res.redirect("/welcome");
+    res.redirect("/");
 });
 
 app.post("/register", (req, res) => {
@@ -62,7 +62,7 @@ app.post("/register", (req, res) => {
         res.json({ success: false });
     } else {
         hash(password).then((hashPw) => {
-            db.registerUser(first, last, email, hashPw)
+            db.registerUser(first, last, email, hashPw, "regular")
                 .then((result) => {
                     req.session.userId = result.rows[0].id;
                     res.json({ success: true });
@@ -148,11 +148,22 @@ app.post("/reset-password", (req, res) => {
     }
 });
 
-app.get("/welcome", function (req, res) {
+// app.get("/welcome", function (req, res) {
+//     if (req.session.userId) {
+//         res.redirect("/");
+//     } else {
+//         res.sendFile(__dirname + "/index.html");
+//     }
+// });
+
+app.get("/api-login", async (req, res) => {
+    console.log("req.session.userId", req.session.userId);
     if (req.session.userId) {
-        res.redirect("/");
+        let { rows } = await db.checkUserType(req.session.userId);
+        console.log("rows", rows[0].user_type);
+        res.json({ loggedIn: true, userType: rows[0].user_type });
     } else {
-        res.sendFile(__dirname + "/index.html");
+        res.json({ loggedIn: false, userType: "" });
     }
 });
 

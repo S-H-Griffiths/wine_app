@@ -22,7 +22,7 @@ export default function Result({ wineList, wineFunction }) {
         <div className="imgbcg">
             <div className="resultContainer">
                 <h1>WE RECOMMEND THESE BASED ON YOUR CHOICES</h1>
-                <p>SAVE WINES TO YOUR ACCOUNT TO REVISIT LATER</p>
+                <p>CREATE AN ACCOUNT TO SAVE WINES AND REVISIT LATER</p>
                 <div>
                     <Card
                         wineList={wineList}

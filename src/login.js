@@ -14,17 +14,29 @@ export default function Login() {
                     Incorrect combination, please try again
                 </div>
             )}
-            <p>Please login to view your account</p>
-            <input name="email" placeholder="Email" onChange={handleChange} />
+            <p className="list">Please login to view your account</p>
             <input
+                className="otherInput"
+                name="email"
+                placeholder="Email"
+                onChange={handleChange}
+            />
+            <input
+                className="otherInput"
                 name="password"
                 type="password"
                 placeholder="Password"
                 onChange={handleChange}
             />
-            <button onClick={submit}>Login</button>
-            <Link to="/">No account yet? Click to register</Link>
-            <Link to="/reset">Forgot password?</Link>
+            <button className="registerButton" onClick={submit}>
+                Login
+            </button>
+            <Link to="/" className="close">
+                No account yet? Click to register
+            </Link>
+            <Link to="/reset" className="close">
+                Forgot password?
+            </Link>
         </div>
     );
 }
