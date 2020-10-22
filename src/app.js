@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "./axios";
+// import axios from "./axios";
 import Logo from "./logo";
 import Intro from "./intro";
 import Navigation from "./navigation";
@@ -8,6 +8,7 @@ import Selection from "./selection";
 import Result from "./result";
 import Saved from "./saved";
 import Wines from "./wine-list";
+import Add from "./add";
 import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends React.Component {
@@ -69,6 +70,7 @@ class App extends React.Component {
                             <Wines wineFunction={(arg) => this.wineList(arg)} />
                         )}
                     />
+                    <Route path="/add-wines" render={() => <Add />} />
 
                     {this.state.uploaderVisible && (
                         <Hamburger

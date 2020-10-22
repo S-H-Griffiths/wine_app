@@ -7,7 +7,7 @@ export default function Selection({ wineList }) {
     const [searchList, setsearchList] = useState([]);
     const [ingredientList, setingredientList] = useState([]);
     const [budget, setBudget] = useState([]);
-    const [eveningType, seteveningType] = useState([]);
+    // const [eveningType, seteveningType] = useState([]);
     const [userResults, setuserResults] = useState({});
     const history = useHistory();
     useEffect(() => {
@@ -36,7 +36,9 @@ export default function Selection({ wineList }) {
     }, [userInput]);
     const addIngredient = (eep) => {
         setingredientList(ingredientList.concat(eep.ingredient));
-        setuserInput("");
+        // WOULD LOVE TO CLEAR THE SEARCH FIELD
+        eep = "";
+        setuserInput(eep);
     };
     const updateBudget = ({ target }) => {
         const exists = budget.some((item) => item === target.name);
@@ -48,24 +50,25 @@ export default function Selection({ wineList }) {
             setBudget(budget.filter((item) => item !== target.name));
         }
     };
-    const updateOccasion = ({ target }) => {
-        const exists = eveningType.some((item) => item === target.name);
-        if (!exists) {
-            seteveningType((budget) => {
-                return [...eveningType, target.name];
-            });
-        } else {
-            seteveningType(eveningType.filter((item) => item !== target.name));
-        }
-    };
+    // const updateOccasion = ({ target }) => {
+    //     const exists = eveningType.some((item) => item === target.name);
+    //     if (!exists) {
+    //         seteveningType((budget) => {
+    //             return [...eveningType, target.name];
+    //         });
+    //     } else {
+    //         seteveningType(eveningType.filter((item) => item !== target.name));
+    //     }
+    // };
     const clickButton = () => {
         (async () => {
             try {
                 let meal = {
                     ingredient: ingredientList,
                     budget: budget,
-                    evening_type: eveningType,
+                    // evening_type: eveningType,
                 };
+                console.log("meal", meal);
                 const resp = await axios.post("/select-wine", meal);
                 wineList(resp.data.winelist);
                 history.push("/result");
@@ -86,7 +89,7 @@ export default function Selection({ wineList }) {
                         <h2>WHAT ARE YOU PLANNING TO EAT?</h2>
                         <div className="ingredients">
                             <div>
-                                <p>SELECTIONS</p>
+                                {/* <p>SELECTIONS</p> */}
                                 <input
                                     onChange={handleChange}
                                     type="text"
@@ -111,15 +114,14 @@ export default function Selection({ wineList }) {
                         <h2>WHAT IS YOUR BUDGET?</h2>
 
                         <div className="attributes">
-                            <div className="attribute">
+                            <div>
                                 <input
                                     type="checkbox"
                                     name="budget1"
                                     onClick={(e) => updateBudget(e)}
                                 ></input>
-                                <img className="icon" src="./img/glass.png" />
+                                {/* <img className="icon" src="./img/glass.png" /> */}
                                 <label htmlFor="budget1">
-                                    {" "}
                                     SOMETHING SIMPLE (€4-€7)
                                 </label>
                             </div>
@@ -129,7 +131,7 @@ export default function Selection({ wineList }) {
                                     name="budget2"
                                     onClick={(e) => updateBudget(e)}
                                 />
-                                <img className="icon" src="./img/glass.png" />
+                                {/* <img className="icon" src="./img/glass.png" /> */}
                                 <label htmlFor="budget2">
                                     A BIT NICER THAN NORMAL(€7-€12)
                                 </label>
@@ -140,7 +142,7 @@ export default function Selection({ wineList }) {
                                     name="budget3"
                                     onClick={(e) => updateBudget(e)}
                                 />
-                                <img className="icon" src="./img/glass.png" />
+                                {/* <img className="icon" src="./img/glass.png" /> */}
                                 <label htmlFor="budget3">
                                     SOMETHING TO CELEBRATE(€12-€20)
                                 </label>

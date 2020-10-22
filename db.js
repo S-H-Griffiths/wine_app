@@ -98,3 +98,28 @@ module.exports.getAllWines = () => {
     const c = `SELECT * FROM wine`;
     return db.query(c);
 };
+
+module.exports.addNewWine = (
+    wine_name,
+    year,
+    grape,
+    wine_description,
+    shop,
+    price
+) => {
+    const s = `INSERT INTO wine (wine_name, year, grape, wine_description, shop, price) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
+    const replies = [wine_name, year, grape, wine_description, shop, price];
+    return db.query(s, replies);
+};
+
+module.exports.getWineTag = (tag_name) => {
+    const c = `SELECT * FROM taste_tags WHERE tag_name= $1`;
+    const replies = [tag_name];
+    return db.query(c, replies);
+};
+
+module.exports.addWineTags = (wine_id, tag_id) => {
+    const c = `INSERT INTO wine_tag (wine_id, tag_id) VALUES ($1, $2) RETURNING *`;
+    const replies = [wine_id, tag_id];
+    return db.query(c, replies);
+};

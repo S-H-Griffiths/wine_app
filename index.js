@@ -274,6 +274,30 @@ app.get("/get-all-wines", async (req, res) => {
     }
 });
 
+app.post("/upload-wine", async (req, res) => {
+    console.log("req.body", req.body.userInput);
+    try {
+        let w = req.body.userInput;
+        let { rows } = await db.addNewWine(
+            w.wine_name,
+            w.year,
+            w.grape,
+            w.wine_description,
+            w.shop,
+            w.price
+        );
+        // console.log("rows", rows);
+        // WILL ALSO NEED TO ADD THE TAGS
+        let tag = await db.getWineTag(w.tag);
+        // console.log("this should be the id", tag.rows[0].id);
+        let data = await db.addWineTags(rows[0].id, tag.rows[0].id);
+        console.log("rows", data.rows);
+        res.json({ success: true });
+    } catch (e) {
+        console.log("error getting list", e);
+    }
+});
+
 // this must be the last route in the file!!!!
 app.get("*", function (req, res) {
     // if (!req.session.userId) {
