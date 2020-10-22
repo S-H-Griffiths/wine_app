@@ -295,6 +295,7 @@ app.post("/upload-wine", async (req, res) => {
         res.json({ success: true });
     } catch (e) {
         console.log("error getting list", e);
+        res.json({ success: false });
     }
 });
 

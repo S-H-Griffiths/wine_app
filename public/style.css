@@ -343,16 +343,17 @@ footer {
 
 .divide {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 1fr 1fr;
     padding: 30px;
     /* align-content: center; */
 }
 
 .uploadDetails {
     display: grid;
-    grid-template-columns: 200px 300px;
+    grid-template-columns: 200px 250px;
     grid-template-rows: auto auto auto auto;
-    margin-left: 20px;
+    /* padding: 50px; */
+    /* margin-left: 20px; */
     /* margin-right: 30px; */
     margin-bottom: 20px;
 }
@@ -362,6 +363,10 @@ footer {
     grid-template-columns: 50px 300px;
     grid-template-rows: auto auto auto auto;
     margin-left: 30px;
+}
+
+.error {
+    color: red;
 }
 
 .margin {

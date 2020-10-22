@@ -95,7 +95,7 @@ module.exports.getUserSavedWines = (userId) => {
 };
 
 module.exports.getAllWines = () => {
-    const c = `SELECT * FROM wine`;
+    const c = `SELECT * FROM wine ORDER BY id DESC`;
     return db.query(c);
 };
 

@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "./axios";
-import { async } from "crypto-random-string";
+// import { async } from "crypto-random-string";
+import { useHistory } from "react-router-dom";
 
 export default function Add({ toggleUploader }) {
     const [userInput, setuserInput] = useState("");
     const [wineEntry, setwineEntry] = useState({});
+    const [error, setError] = useState();
+    const history = useHistory();
 
     const clickButton = () => {
         (async () => {
             try {
-                console.log("click click", wineEntry);
                 let { data } = await axios.post("/upload-wine", wineEntry);
-                console.log("data from db", data);
+                {
+                    data.success ? history.push("/all-wines") : setError(true);
+                }
             } catch (e) {
                 console.log("error in request", e);
+                setError(true);
             }
         })();
     };
@@ -22,14 +27,6 @@ export default function Add({ toggleUploader }) {
     }, [userInput]);
     const updateTags = ({ target }) => {
         console.log("target", target.value);
-        // const exists = userInput.tag.some((item) => item === target.name);
-        // if (!exists) {
-        //     setwineEntry((tag) => {
-        //         return [...tag, target.name];
-        //     });
-        // } else {
-        //     setwineEntry(tag.filter((item) => item !== target.name));
-        // }
         setuserInput({
             ...userInput,
             tag: target.value,
@@ -41,13 +38,17 @@ export default function Add({ toggleUploader }) {
             ...userInput,
             [e.target.name]: e.target.value,
         });
-        // console.log("typing", e.target.value);
     };
     console.log("wineEntry", wineEntry);
     return (
         <>
             <div className="upload">
                 <h1>INCREASE OUR SELECTION</h1>
+                {error && (
+                    <p className="error">
+                        Something went wrong, please try again
+                    </p>
+                )}
                 <div className="divide">
                     <div>
                         <h2>DETAILS</h2>
@@ -110,24 +111,6 @@ export default function Add({ toggleUploader }) {
                         <div className="uploadTags">
                             <input
                                 type="radio"
-                                value="Aromatic and mellow"
-                                name="tag"
-                                onClick={(e) => updateTags(e)}
-                            />
-                            <label htmlFor="aromatic and mellow">
-                                Aromatic and Mellow
-                            </label>
-                            <input
-                                type="radio"
-                                value="Fruity and medium bodied"
-                                name="tag"
-                                onClick={(e) => updateTags(e)}
-                            />
-                            <label htmlFor="fruity and medium bodied">
-                                Fruity and Medium bodied
-                            </label>
-                            <input
-                                type="radio"
                                 value="Aromatic and supple"
                                 name="tag"
                                 onClick={(e) => updateTags(e)}
@@ -146,6 +129,15 @@ export default function Add({ toggleUploader }) {
                             </label>
                             <input
                                 type="radio"
+                                value="Aromatic and mellow"
+                                name="tag"
+                                onClick={(e) => updateTags(e)}
+                            />
+                            <label htmlFor="aromatic and mellow">
+                                Aromatic and mellow
+                            </label>
+                            <input
+                                type="radio"
                                 value="Delicate and light"
                                 name="tag"
                                 onClick={(e) => updateTags(e)}
@@ -155,21 +147,30 @@ export default function Add({ toggleUploader }) {
                             </label>
                             <input
                                 type="radio"
-                                value="Fruity and vibrant"
+                                value="Fruity and extra sweet"
                                 name="tag"
                                 onClick={(e) => updateTags(e)}
                             />
-                            <label htmlFor="Fruity and vibrant">
-                                Fruity and vibrant
+                            <label htmlFor="Fruity and extra sweet">
+                                Fruity and extra sweet
                             </label>
                             <input
                                 type="radio"
-                                value="Aromatic and mellow"
+                                value="Fruity and light"
                                 name="tag"
                                 onClick={(e) => updateTags(e)}
                             />
-                            <label htmlFor="Aromatic and mellow">
-                                Aromatic and mellow
+                            <label htmlFor="Fruity and light">
+                                Fruity and light
+                            </label>
+                            <input
+                                type="radio"
+                                value="Fruity and medium bodied"
+                                name="tag"
+                                onClick={(e) => updateTags(e)}
+                            />
+                            <label htmlFor="fruity and medium bodied">
+                                Fruity and medium bodied
                             </label>
                             <input
                                 type="radio"
@@ -182,14 +183,13 @@ export default function Add({ toggleUploader }) {
                             </label>
                             <input
                                 type="radio"
-                                value="Fruity and extra sweet"
+                                value="Fruity and vibrant"
                                 name="tag"
                                 onClick={(e) => updateTags(e)}
                             />
-                            <label htmlFor="Fruity and extra sweet">
-                                Fruity and extra sweet
+                            <label htmlFor="Fruity and vibrant">
+                                Fruity and vibrant
                             </label>
-                            {/* </div> */}
                         </div>
                     </div>
                 </div>
