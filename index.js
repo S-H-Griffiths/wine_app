@@ -7,7 +7,7 @@ const { decodeBase64 } = require("bcryptjs");
 const { compare, hash } = require("./bc");
 const cookieSession = require("cookie-session");
 const { send } = require("./ses.js");
-const s3 = require("./s3.js");
+// const s3 = require("./s3.js");
 const csurf = require("csurf");
 
 //////////////////////////////////////////////
@@ -167,14 +167,6 @@ app.post("/reset-password", (req, res) => {
     }
 });
 
-// app.get("/welcome", function (req, res) {
-//     if (req.session.userId) {
-//         res.redirect("/");
-//     } else {
-//         res.sendFile(__dirname + "/index.html");
-//     }
-// });
-
 app.get("/api-login", async (req, res) => {
     console.log("req.session.userId", req.session.userId);
     if (req.session.userId) {
@@ -218,7 +210,7 @@ app.post("/select-wine", async (req, res) => {
             minPrice,
             maxPrice
         );
-        // console.log("db response: ", rows);
+        console.log("db response: ", rows);
         res.json({
             winelist: rows,
         });

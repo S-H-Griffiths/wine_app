@@ -11,6 +11,7 @@ body {
     display: grid;
     grid-template-rows: 10% 90%;
     background-color: #2b0000;
+    /* min-height: 100%; */
 }
 
 .imgbcg {
@@ -199,16 +200,19 @@ button:hover {
 footer {
     text-align: right;
     height: 80px;
+    /* clear: both; */
+    /* position: relative; */
+    /* height: 200px; */
+    /* margin-top: -80px; */
     padding-right: 20px;
     padding: 20px;
-    /* margin-bottom: 20px; */
     width: 100%;
     position: absolute;
     border-top: 2px black solid;
     background-color: white;
-    /* color: black; */
     font-family: "Unica One", cursive;
     font-size: 30px;
+    /* bottom: 1px; */
 }
 
 .selection {
@@ -300,6 +304,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 450px;
 }
 .resultCard {
     /* border: 2px black solid; */
@@ -339,6 +344,8 @@ footer {
     align-items: center;
     width: 100%;
     margin: 20px;
+    height: 550px;
+    padding-top: 50px;
     /* background-color: white; */
     /* color: white; */
     /* border: 2px black solid; */

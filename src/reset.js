@@ -72,24 +72,33 @@ class ResetPassword extends React.Component {
         if (this.state.current == 1) {
             elem = (
                 <>
-                    <p>Reset Password</p>
-                    <p>Please enter your registered email </p>
+                    <p className="list">RESET PASSWORD</p>
+                    <p className="list">Please enter your registered email </p>
                     <input
+                        className="shopInput"
                         name="email"
                         placeholder="Email"
                         key="email"
                         onChange={(e) => this.handleChange(e)}
                     />
-                    <button onClick={() => this.submitEmail()}>Next</button>
+                    <button
+                        className="registerButton"
+                        onClick={() => this.submitEmail()}
+                    >
+                        Next
+                    </button>
                 </>
             );
         }
         if (this.state.current == 2) {
             elem = (
                 <>
-                    <p>Reset Password</p>
-                    <p>A reset code has been emailed to you </p>
+                    <p className="list">RESET PASSWORD</p>
+                    <p className="list">
+                        A reset code has been emailed to you{" "}
+                    </p>
                     <input
+                        className="shopInput"
                         name="code"
                         key="code"
                         type="text"
@@ -97,19 +106,25 @@ class ResetPassword extends React.Component {
                         onChange={(e) => this.handleChange(e)}
                     />
                     <input
+                        className="shopInput"
                         name="password"
                         type="password"
                         placeholder="New Password"
                         onChange={(e) => this.handleChange(e)}
                     />
-                    <button onClick={() => this.resetCode()}>Reset</button>
+                    <button
+                        className="registerButton"
+                        onClick={() => this.resetCode()}
+                    >
+                        Reset
+                    </button>
                 </>
             );
         }
         if (this.state.current == 3) {
             elem = (
                 <>
-                    <Link to="/login">
+                    <Link className="navText" to="/login">
                         Password change successfully. Click to login.
                     </Link>
                 </>

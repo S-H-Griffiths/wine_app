@@ -110,7 +110,7 @@ export default function Selection({ wineList }) {
                                 ></input>
                                 {/* <img className="icon" src="./img/glass.png" /> */}
                                 <label htmlFor="budget1">
-                                    SOMETHING SIMPLE (€4-€7)
+                                    SOMETHING SIMPLE (€2-€7)
                                 </label>
                             </div>
                             <div>
@@ -132,7 +132,7 @@ export default function Selection({ wineList }) {
                                 />
                                 {/* <img className="icon" src="./img/glass.png" /> */}
                                 <label htmlFor="budget3">
-                                    SOMETHING TO CELEBRATE(€12-€20)
+                                    SOMETHING TO CELEBRATE(€12+)
                                 </label>
                             </div>
                         </div>

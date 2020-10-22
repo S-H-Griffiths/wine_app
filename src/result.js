@@ -27,6 +27,12 @@ export default function Result({ wineList, wineFunction }) {
                     CREATE AN ACCOUNT TO SAVE WINES AND REVISIT LATER
                 </Link>
                 <div>
+                    {!wineList.length && (
+                        <p>
+                            Sorry, there weren't any results. Check back soon as
+                            we expand the catalogue.
+                        </p>
+                    )}
                     <Card
                         wineList={wineList}
                         userResults={userResults}

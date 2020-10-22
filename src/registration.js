@@ -22,25 +22,25 @@ export default function Registration({ loggedIn }) {
                 )}
                 <p className="list">PLEASE CREATE AN ACCOUNT</p>
                 <input
-                    className="otherInput"
+                    className="shopInput"
                     name="first"
                     placeholder="First Name"
                     onChange={handleChange}
                 />
                 <input
-                    className="otherInput"
+                    className="shopInput"
                     name="last"
                     placeholder="Last Name"
                     onChange={handleChange}
                 />
                 <input
-                    className="otherInput"
+                    className="shopInput"
                     name="email"
                     placeholder="Email"
                     onChange={handleChange}
                 />
                 <input
-                    className="otherInput"
+                    className="shopInput"
                     name="password"
                     type="password"
                     placeholder="Password"

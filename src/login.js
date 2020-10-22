@@ -16,13 +16,13 @@ export default function Login() {
             )}
             <p className="list">PLEASE LOGIN TO VIEW YOUR ACCOUNT</p>
             <input
-                className="otherInput"
+                className="shopInput"
                 name="email"
                 placeholder="Email"
                 onChange={handleChange}
             />
             <input
-                className="otherInput"
+                className="shopInput"
                 name="password"
                 type="password"
                 placeholder="Password"

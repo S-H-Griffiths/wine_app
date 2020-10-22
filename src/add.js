@@ -46,7 +46,7 @@ export default function Add({ toggleUploader, userType, loggedIn }) {
     return (
         <>
             <div className="upload">
-                <h1>INCREASE OUR SELECTION</h1>
+                <h1>INCREASE YOUR SELECTION</h1>
                 {error && (
                     <p className="error">
                         Something went wrong, please try again
