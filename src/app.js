@@ -12,6 +12,7 @@ import Add from "./add";
 import Registration from "./registration.js";
 import Login from "./login";
 import ResetPassword from "./reset";
+import Shop from "./new-shop";
 import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends React.Component {
@@ -119,6 +120,10 @@ class App extends React.Component {
                         render={() => (
                             <Registration loggedIn={this.state.loggedIn} />
                         )}
+                    />
+                    <Route
+                        path="/new-shop"
+                        render={() => <Shop loggedIn={this.state.loggedIn} />}
                     />
                     <Route path="/login" component={Login} />
                     <Route path="/reset" component={ResetPassword} />

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import axios from "./axios";
 
 export default function Hamburger({ toggleUploader }) {
     return (
@@ -9,7 +8,6 @@ export default function Hamburger({ toggleUploader }) {
                 <p className="close" onClick={() => toggleUploader()}>
                     X
                 </p>
-                <h2 className="navText">NAVIGATION</h2>
                 <Link
                     to="/"
                     className="navText"

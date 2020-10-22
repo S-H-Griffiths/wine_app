@@ -2,6 +2,7 @@
     color: #817f75;
     box-sizing: border-box;
     margin: 0;
+    font-family: "M PLUS 1p", sans-serif;
 }
 /* 2b0000 */
 /* 899878 */
@@ -33,15 +34,17 @@ body {
 }
 
 .navLinks {
+    /* align-items: center; */
+    /* align-self: center; */
+    display: flex;
     align-items: center;
 }
 
 .navTest {
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
     margin-right: 20px;
     text-decoration: none;
-    width: 50px;
-    font-family: "M PLUS 1p", sans-serif;
+    /* width: 50px; */
     font-size: 14px;
     align-content: center;
     /* line-height: 120px; */
@@ -50,7 +53,7 @@ body {
 .navSave {
     height: 30px;
     width: 30px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     margin-right: 20px;
 }
 
@@ -88,8 +91,6 @@ body {
 }
 
 h1 {
-    /* font-family: "Homemade Apple", cursive; */
-    /* font-family: "Calligraffitti", cursive; */
     align-self: center;
     /* margin-left: 50px; */
     margin-top: 50px;
@@ -101,8 +102,6 @@ h2,
 p,
 label,
 button {
-    /* font-family: "Raleway", sans-serif; */
-    font-family: "M PLUS 1p", sans-serif;
     padding: 5px;
 }
 
@@ -126,7 +125,6 @@ button {
     text-align: center;
     line-height: 36px;
     text-decoration: none;
-    font-family: "M PLUS 1p", sans-serif;
     /* grid-column: 2 / 3; */
 }
 
@@ -144,7 +142,6 @@ button {
     box-shadow: 0 10px 20px;
     /* line-height: 36px; */
     text-decoration: none;
-    font-family: "M PLUS 1p", sans-serif;
 }
 
 button:hover {
@@ -183,7 +180,6 @@ button:hover {
     font-size: 25px;
     display: flex;
     flex-direction: column;
-    font-family: "M PLUS 1p", sans-serif;
 }
 
 .navText {
@@ -196,7 +192,6 @@ button:hover {
     text-align: right;
     cursor: pointer;
     color: white;
-    font-family: "M PLUS 1p", sans-serif;
     font-weight: bold;
     text-decoration: none;
 }
@@ -293,7 +288,6 @@ footer {
 .list {
     color: white;
     font-size: 25px;
-    font-family: "M PLUS 1p", sans-serif;
     margin-left: 15px;
 }
 
@@ -403,6 +397,15 @@ footer {
     background-color: #2b0000;
 }
 
+.shopInput {
+    height: 40px;
+    width: 300px;
+    border: 0px;
+    border-bottom: 2px white solid;
+    margin: 5px;
+    background-color: #2b0000;
+}
+
 .registerButton {
     margin: 20px;
     color: white;
@@ -414,7 +417,6 @@ footer {
     text-align: center;
     /* line-height: 36px; */
     text-decoration: none;
-    font-family: "M PLUS 1p", sans-serif;
     /* grid-column: 2 / 3; */
 }
 

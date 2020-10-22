@@ -7,7 +7,6 @@ export default function Selection({ wineList }) {
     const [searchList, setsearchList] = useState([]);
     const [ingredientList, setingredientList] = useState([]);
     const [budget, setBudget] = useState([]);
-    // const [eveningType, seteveningType] = useState([]);
     const [userResults, setuserResults] = useState({});
     const history = useHistory();
     useEffect(() => {
@@ -50,16 +49,6 @@ export default function Selection({ wineList }) {
             setBudget(budget.filter((item) => item !== target.name));
         }
     };
-    // const updateOccasion = ({ target }) => {
-    //     const exists = eveningType.some((item) => item === target.name);
-    //     if (!exists) {
-    //         seteveningType((budget) => {
-    //             return [...eveningType, target.name];
-    //         });
-    //     } else {
-    //         seteveningType(eveningType.filter((item) => item !== target.name));
-    //     }
-    // };
     const clickButton = () => {
         (async () => {
             try {
@@ -89,7 +78,6 @@ export default function Selection({ wineList }) {
                         <h2>WHAT ARE YOU PLANNING TO EAT?</h2>
                         <div className="ingredients">
                             <div>
-                                {/* <p>SELECTIONS</p> */}
                                 <input
                                     onChange={handleChange}
                                     type="text"
@@ -168,36 +156,6 @@ export default function Selection({ wineList }) {
                             SUBMIT
                         </button>
                     </div>
-                    {/* <h2>IS IT A SPECIAL OCCASION?</h2>
-                <div className="selection">
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="occasion1"
-                            onClick={(e) => updateOccasion(e)}
-                        />
-                        <label htmlFor="occasion1"> DINNER WITH FRIENDS</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="occasion2"
-                            onClick={(e) => updateOccasion(e)}
-                        />
-                        <label htmlFor="occasion2"> ROMANTIC EVENING</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="occasion3"
-                            onClick={(e) => updateOccasion(e)}
-                        />
-                        <label htmlFor="occasion3">
-                            {" "}
-                            SOMETHING TO CELEBRATE
-                        </label>
-                    </div>
-                </div> */}
                 </div>
             </div>
         </>

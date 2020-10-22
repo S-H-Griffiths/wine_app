@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "./axios";
-// import { async } from "crypto-random-string";
 import { useHistory } from "react-router-dom";
 
 export default function Add({ toggleUploader, userType, loggedIn }) {

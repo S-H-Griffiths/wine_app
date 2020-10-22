@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "./axios";
 
 export default function Result({ wineList, wineFunction, userResults }) {
-    // const [userResults, setuserResults] = useState([]);
-
     const saveWine = (e) => {
         (async () => {
             console.log("clicking");

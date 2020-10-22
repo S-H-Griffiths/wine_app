@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "./axios";
 import Card from "./results-card";
+import { Link } from "react-router-dom";
 
 export default function Result({ wineList, wineFunction }) {
     const [userResults, setuserResults] = useState([]);
@@ -22,7 +23,9 @@ export default function Result({ wineList, wineFunction }) {
         <div className="imgbcg">
             <div className="resultContainer">
                 <h1>WE RECOMMEND THESE BASED ON YOUR CHOICES</h1>
-                <p>CREATE AN ACCOUNT TO SAVE WINES AND REVISIT LATER</p>
+                <Link to="/register" className="navTest">
+                    CREATE AN ACCOUNT TO SAVE WINES AND REVISIT LATER
+                </Link>
                 <div>
                     <Card
                         wineList={wineList}

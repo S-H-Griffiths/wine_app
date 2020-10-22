@@ -14,7 +14,7 @@ export default function Navigation({ toggleUploader, userType, loggedIn }) {
                     <Link to="/login" className="navTest">
                         LOGIN
                     </Link>
-                    <Link to="/" className="navTest">
+                    <Link to="/new-shop" className="navTest">
                         FOR WINE SHOPS
                     </Link>
                 </>

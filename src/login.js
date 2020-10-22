@@ -14,7 +14,7 @@ export default function Login() {
                     Incorrect combination, please try again
                 </div>
             )}
-            <p className="list">Please login to view your account</p>
+            <p className="list">PLEASE LOGIN TO VIEW YOUR ACCOUNT</p>
             <input
                 className="otherInput"
                 name="email"

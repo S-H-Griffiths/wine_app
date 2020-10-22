@@ -57,12 +57,31 @@ app.get("/logout", (req, res) => {
 
 app.post("/register", (req, res) => {
     var { first, last, email, password } = req.body;
-    console.log("coming through", req.body);
+    // console.log("coming through", req.body);
     if (!first || !last || !email || !password) {
         res.json({ success: false });
     } else {
         hash(password).then((hashPw) => {
             db.registerUser(first, last, email, hashPw, "regular")
+                .then((result) => {
+                    req.session.userId = result.rows[0].id;
+                    res.json({ success: true });
+                })
+                .catch((e) => {
+                    console.log("error in registration post", e);
+                });
+        });
+    }
+});
+
+app.post("/add-shop", (req, res) => {
+    console.log("registering shop", req.body);
+    var { first, last, email, password } = req.body;
+    if (!first || !last || !email || !password) {
+        res.json({ success: false });
+    } else {
+        hash(password).then((hashPw) => {
+            db.registerUser(first, last, email, hashPw, "wine_shop")
                 .then((result) => {
                     req.session.userId = result.rows[0].id;
                     res.json({ success: true });
