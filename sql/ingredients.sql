@@ -7,6 +7,6 @@ CREATE TABLE ingredients(
 
 
 
--- INSERT INTO ingredients (ingredient)
--- VALUES 
--- ('Truffle');
+INSERT INTO ingredients (ingredient)
+VALUES 
+('Feta');

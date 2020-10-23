@@ -1,10 +1,10 @@
 DROP TABLE IF EXISTS ingredient_tag;
 
- CREATE TABLE ingredient_tag(
-    id SERIAL PRIMARY KEY,
-    ingredient_id VARCHAR(255) NOT NULL,
-    tag_ids integer ARRAY[3]
-      );
+--  CREATE TABLE ingredient_tag(
+--     id SERIAL PRIMARY KEY,
+--     ingredient_id VARCHAR(255) NOT NULL,
+--     tag_ids integer ARRAY[3]
+--       );
 
 
 INSERT INTO ingredient_tag (ingredient_id, tag_ids)

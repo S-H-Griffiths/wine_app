@@ -31,7 +31,7 @@ export default function Login() {
             <button className="registerButton" onClick={submit}>
                 Login
             </button>
-            <Link to="/" className="close">
+            <Link to="/register" className="close">
                 No account yet? Click to register
             </Link>
             <Link to="/reset" className="close">
