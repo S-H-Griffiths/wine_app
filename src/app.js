@@ -130,6 +130,7 @@ class App extends React.Component {
                     {this.state.uploaderVisible && (
                         <Hamburger
                             toggleUploader={() => this.toggleUploader()}
+                            loggedIn={this.state.loggedIn}
                         />
                     )}
                 </div>

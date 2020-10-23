@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Hamburger({ toggleUploader }) {
+export default function Hamburger({ toggleUploader, loggedIn }) {
     return (
         <div className="darkened">
             <div className="navigationBar">
@@ -22,11 +22,13 @@ export default function Hamburger({ toggleUploader }) {
                 >
                     - NEW SELECTION
                 </Link>
-                <div>
-                    <a className="navText" href="/logout">
-                        - LOGOUT
-                    </a>
-                </div>
+                {loggedIn && (
+                    <div>
+                        <a className="navText" href="/logout">
+                            - LOGOUT
+                        </a>
+                    </div>
+                )}
             </div>
         </div>
     );
