@@ -85,6 +85,7 @@ export default function Selection({ wineList }) {
                                     autoComplete="off"
                                     placeholder="SEARCH"
                                     className="searchField"
+                                    value={userInput}
                                 />
                                 {searchList.map((item, i) => {
                                     return (
